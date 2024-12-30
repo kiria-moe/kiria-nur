@@ -6,6 +6,6 @@ Some programs packaged by me and their corresponding modules.
 
 - [Trojan-go](https://github.com/p4gefau1t/trojan-go)
 
-## modules
+## Modules
 
 - services.trojan-go
