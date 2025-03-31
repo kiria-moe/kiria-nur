@@ -14,7 +14,10 @@
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
     in
     {
-      nixosModules.trojan-go = import ./modules/trojan-go;
+      nixosModules = {
+        trojan-go = import ./modules/trojan-go;
+        kmscon-macslow = import ./modules/kmscon-macslow;
+      };
       legacyPackages = forAllSystems (system: import ./default.nix {
         pkgs = import nixpkgs { inherit system; };
       });
