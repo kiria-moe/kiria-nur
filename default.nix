@@ -17,4 +17,5 @@
   trojan-go = pkgs.callPackage ./pkgs/trojan-go { };
   libtsm = pkgs.callPackage ./pkgs/libtsm { };
   kmscon-macslow = pkgs.callPackage ./pkgs/kmscon-macslow { };
+  surgio = pkgs.callPackage ./pkgs/surgio.nix { };
 }
