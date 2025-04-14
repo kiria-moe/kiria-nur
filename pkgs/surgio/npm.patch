@@ -1,0 +1,22 @@
+diff --git a/createSurgioStore.js b/createSurgioStore.js
+index 7c7fa89..48a07ef 100644
+--- a/createSurgioStore.js
++++ b/createSurgioStore.js
+@@ -319,7 +319,7 @@ function checkThatNpmCanReadCwd() {
+     // `npm config list` is the only reliable way I could find
+     // to reproduce the wrong path. Just printing process.cwd()
+     // in a Node process was not enough.
+-    childOutput = spawn.sync('npm', ['config', 'list']).output.join('')
++    childOutput = spawn.sync('/bin/npm', ['config', 'list']).output.join('')
+   } catch (err) {
+     // Something went wrong spawning node.
+     // Not great, but it means we can't do this check.
+@@ -376,7 +376,7 @@ function install(root, dependencies, verbose) {
+     let command
+     let args
+ 
+-    command = 'npm'
++    command = '/bin/npm'
+     args = ['install', '--save', '--save-exact', '--loglevel', 'error'].concat(
+       dependencies
+     )

@@ -8,6 +8,7 @@ Some programs packaged by me and their corresponding modules.
 - [Libtsm](https://github.com/Aetf/libtsm)
 - [Kmscon by MacSlow on output-rotation-support](https://github.com/MacSlow/kmscon/tree/output-rotation-support)
 - [Surgio](https://github.com/geekdada/surgio)
+- [create-surgio-store](https://github.com/surgioproject/create-surgio-store/)
 
 ## Modules
 
