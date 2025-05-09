@@ -19,4 +19,5 @@
   kmscon-macslow = pkgs.callPackage ./pkgs/kmscon-macslow { };
   surgio = pkgs.callPackage ./pkgs/surgio/surgio.nix { };
   create-surgio-store = pkgs.callPackage ./pkgs/surgio/create-surgio-store.nix { };
+  surgio-gateway = src: pkgs.callPackage ./pkgs/surgio-gateway { inherit src; };
 }

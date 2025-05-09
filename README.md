@@ -1,6 +1,6 @@
 # Kiria-nur
 
-Some programs packaged by me and their corresponding modules.
+Some programs packaged by myself and their corresponding modules.
 
 ## Packages
 
@@ -9,6 +9,7 @@ Some programs packaged by me and their corresponding modules.
 - [Kmscon by MacSlow on output-rotation-support](https://github.com/MacSlow/kmscon/tree/output-rotation-support)
 - [Surgio](https://github.com/geekdada/surgio)
 - [create-surgio-store](https://github.com/surgioproject/create-surgio-store/)
+- [Surgio as gateway](https://surgio.js.org/guide/api.html)
 
 ## Modules
 

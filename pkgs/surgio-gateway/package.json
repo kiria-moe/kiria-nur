@@ -1,0 +1,14 @@
+{
+  "name": "surgio-gateway",
+  "version": "0.1.0",
+  "bin": {
+    "surgio-gateway": "./gateway.js"
+  },
+  "engine": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@surgio/gateway": "2.2.0",
+    "surgio": "3.10.7"
+  }
+}
