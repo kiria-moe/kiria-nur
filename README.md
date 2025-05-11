@@ -15,3 +15,4 @@ Some programs packaged by myself and their corresponding modules.
 
 - services.trojan-go
 - services.kmscon-macslow
+- services.surgio-gateway
