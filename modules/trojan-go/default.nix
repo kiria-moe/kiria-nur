@@ -73,8 +73,8 @@ in
       };
       openFirewall = lib.mkOption {
         type = lib.types.bool;
-        default = true;
-        description = "Whether to automatically open the specified ports in the firewall.";
+        default = false;
+        description = "Whether to open the specified ports in the firewall.";
       };
     };
   };
@@ -88,7 +88,7 @@ in
         After = [ "network.target" "nss-lookup.target" ];
       };
       serviceConfig = {
-        User = "nobody";
+        DynamicUser = "yes";
         CapabilityBoundingSet = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" ];
         AmbientCapabilities = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" ];
         NoNewPrivileges = true;
