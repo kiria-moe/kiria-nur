@@ -16,6 +16,7 @@
     {
       nixosModules = {
         trojan-go = import ./modules/trojan-go;
+        surgio-gateway = import ./modules/surgio-gateway;
         kmscon-macslow = import ./modules/kmscon-macslow;
       };
       legacyPackages = forAllSystems (system: import ./default.nix {
