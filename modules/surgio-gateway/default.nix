@@ -14,7 +14,7 @@
         description = "Address to bind";
       };
       port = lib.mkOption {
-        type = lib.types.number;
+        type = lib.types.port;
         default = 3000;
         description = "Port to listen on";
       };
@@ -41,7 +41,10 @@
         CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
         AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
         NoNewPrivileges = true;
-        ExecStart = "${pkgs.callPackage ../../pkgs/surgio-gateway { inherit (cfg) src; }}/bin/surgio-gateway ${cfg.address} ${cfg.port}";
+        StateDirectory = "surgio-gateway";
+        Environment = "SURGIO_PROJECT_DIR=/var/lib/private/surgio-gateway";
+        ExecStartPre = "+${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/cp -r ${cfg.src}/* /var/lib/private/surgio-gateway\"";
+        ExecStart = "${pkgs.callPackage ../../pkgs/surgio-gateway { }}/bin/surgio-gateway ${cfg.address} ${builtins.toString cfg.port}";
         Restart = "on-failure";
         RestartSec = "10s";
         LimitNOFILE = "infinity";
