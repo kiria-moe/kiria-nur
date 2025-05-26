@@ -27,6 +27,7 @@ in
         default = false;
         description = "Whether to enable the trojan-go daemon.";
       };
+      package = lib.mkPackageOption pkgs "trojan-go" { };
       run_type = lib.mkOption {
         type = lib.types.str;
       };
@@ -92,7 +93,7 @@ in
         CapabilityBoundingSet = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" ];
         AmbientCapabilities = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" ];
         NoNewPrivileges = true;
-        ExecStart = "${pkgs.callPackage ../../pkgs/trojan-go/default.nix {}}/bin/trojan-go -config ${configFile}";
+        ExecStart = "${cfg.package}/bin/trojan-go -config ${configFile}";
         Restart = "on-failure";
         RestartSec = "10s";
         LimitNOFILE = "infinity";
