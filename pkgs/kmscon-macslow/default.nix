@@ -9,6 +9,7 @@
   libdrm,
   libGLU,
   libGL,
+  libgbm,
   pango,
   pixman,
   pkg-config,
@@ -41,6 +42,7 @@ stdenv.mkDerivation {
     libGLU
     libGL
     libdrm
+    libgbm
     (callPackage ../libtsm { })
     libxkbcommon
     pango
