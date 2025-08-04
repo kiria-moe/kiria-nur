@@ -43,7 +43,10 @@
         NoNewPrivileges = true;
         StateDirectory = "surgio-gateway";
         Environment = "SURGIO_PROJECT_DIR=/var/lib/private/surgio-gateway";
-        ExecStartPre = "+${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/cp -r ${cfg.src}/* /var/lib/private/surgio-gateway\"";
+        ExexStartPre = "+" + pkgs.writeShellScript "surgio-gateway-start-pre" ''
+          ${pkgs.coreutils}/bin/rm -rf /var/lib/private/surgio-gateway/*
+          ${pkgs.coreutils}/bin/cp --reflink=auto -r ${cfg.src}/* /var/lib/private/surgio-gateway
+        '';
         ExecStart = "${pkgs.callPackage ../../pkgs/surgio-gateway { }}/bin/surgio-gateway ${cfg.address} ${builtins.toString cfg.port}";
         Restart = "on-failure";
         RestartSec = "10s";
