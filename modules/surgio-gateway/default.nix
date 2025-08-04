@@ -8,6 +8,11 @@
         type = lib.types.path;
         description = "Source used by surgio-gateway";
       };
+      sedFile = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = null;
+        description = "If set, sed will read the script at this path and perform instructions on the entire src just before surgio-gateway starts. Useful for filling secrets at runtime.";
+      };
       address = lib.mkOption {
         type = lib.types.str;
         default = "0.0.0.0";
@@ -46,7 +51,7 @@
         ExexStartPre = "+" + pkgs.writeShellScript "surgio-gateway-start-pre" ''
           ${pkgs.coreutils}/bin/rm -rf /var/lib/private/surgio-gateway/*
           ${pkgs.coreutils}/bin/cp --reflink=auto -r ${cfg.src}/* /var/lib/private/surgio-gateway
-        '';
+        '' + lib.optionalString (cfg.sedFile != null) "${lib.getExe pkgs.gnused} --in-place --file=${cfg.sedFile} `${lib.getExe pkgs.fd} --unrestricted --type file`";
         ExecStart = "${pkgs.callPackage ../../pkgs/surgio-gateway { }}/bin/surgio-gateway ${cfg.address} ${builtins.toString cfg.port}";
         Restart = "on-failure";
         RestartSec = "10s";
