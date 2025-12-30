@@ -160,7 +160,7 @@ in
           };
           loginArg = if vtOption.executeCommand != null then 
               vtOption.executeCommand
-            else "${pkgs.shadow}/bin/login -p" + (lib.optionalString (vtOption.autologinUser != null) "-f ${vtOption.autologinUser}");
+            else "${pkgs.shadow}/bin/login -p" + (lib.optionalString (vtOption.autologinUser != null) " -f ${vtOption.autologinUser}");
           extraConfig = let
             xkb = optionals vtOption.useXkbConfig (
               lib.mapAttrsToList (n: v: "xkb-${n}=${v}") (
