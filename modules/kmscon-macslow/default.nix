@@ -117,13 +117,10 @@ in
           (lib.fold (a: b: a.enable || b.enable) false)
         ]
     ) {
-      assertions = [ {
+      assertions = lib.singleton {
         assertion = !config.services.kmscon.enable;
         message = "services.kmscon enabled";
-      } ] ++ lib.mapAttrsToList (i: x: {
-        assertion = lib.xor (x.autologinUser == null) (x.executeCommand == null);
-        message = "vts.${i} need to specify autologinUser or executeCommand";
-      }) cfg.vts;
+      };
 
       # Always-on
       systemd.packages = [ (pkgs.callPackage ../../pkgs/kmscon-macslow/default.nix { }) ];
