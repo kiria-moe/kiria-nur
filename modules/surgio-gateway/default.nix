@@ -48,7 +48,7 @@
         NoNewPrivileges = true;
         StateDirectory = "surgio-gateway";
         Environment = "SURGIO_PROJECT_DIR=/var/lib/private/surgio-gateway";
-        ExexStartPre = "+" + pkgs.writeShellScript "surgio-gateway-start-pre" ''
+        ExecStartPre = "+" + pkgs.writeShellScript "surgio-gateway-start-pre" ''
           ${pkgs.coreutils}/bin/rm -rf /var/lib/private/surgio-gateway/*
           ${pkgs.coreutils}/bin/cp --reflink=auto -r ${cfg.src}/* /var/lib/private/surgio-gateway
         '' + lib.optionalString (cfg.sedFile != null) "${lib.getExe pkgs.gnused} --in-place --file=${cfg.sedFile} `${lib.getExe pkgs.fd} --unrestricted --type file`";
