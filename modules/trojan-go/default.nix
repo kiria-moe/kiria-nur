@@ -81,6 +81,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    warnings = [ "kiria-nur is deprecated and will be deleted. Please integrate it into your config." ];
+
     systemd.services."trojan-go" = {
       enable = true;
       unitConfig = {

@@ -34,6 +34,8 @@
   config = let
     cfg = config.services.surgio-gateway;
   in lib.mkIf cfg.enable {
+    warnings = [ "kiria-nur is deprecated and will be deleted. Please integrate it into your config." ];
+
     systemd.services."surgio-gateway" = {
       enable = true;
       unitConfig = {

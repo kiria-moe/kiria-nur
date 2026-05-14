@@ -2,6 +2,13 @@
 
 Some programs packaged by myself and their corresponding modules.
 
+> [!WARNING]
+> Kiria-nur is deprecated and will be deleted.
+>
+> This is mainly because it's inconvenient to modify some file here and relock my config repo.
+>
+> Thanks for using my nur!
+
 ## Packages
 
 - [Trojan-go](https://github.com/p4gefau1t/trojan-go)

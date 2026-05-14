@@ -14,9 +14,9 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  libtsm = pkgs.callPackage ./pkgs/libtsm { };
-  kmscon-macslow = pkgs.callPackage ./pkgs/kmscon-macslow { };
-  surgio = pkgs.callPackage ./pkgs/surgio/surgio.nix { };
-  create-surgio-store = pkgs.callPackage ./pkgs/surgio/create-surgio-store.nix { };
-  surgio-gateway = src: pkgs.callPackage ./pkgs/surgio-gateway { inherit src; };
+  libtsm = pkgs.lib.warnOnInstantiate (pkgs.callPackage ./pkgs/libtsm { });
+  kmscon-macslow = pkgs.lib.warnOnInstantiate (pkgs.callPackage ./pkgs/kmscon-macslow { });
+  surgio = pkgs.lib.warnOnInstantiate (pkgs.callPackage ./pkgs/surgio/surgio.nix { });
+  create-surgio-store = pkgs.lib.warnOnInstantiate (pkgs.callPackage ./pkgs/surgio/create-surgio-store.nix { });
+  surgio-gateway = src: pkgs.lib.warnOnInstantiate (pkgs.callPackage ./pkgs/surgio-gateway { inherit src; });
 }

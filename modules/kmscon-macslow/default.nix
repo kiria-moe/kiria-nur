@@ -117,6 +117,7 @@ in
           (lib.fold (a: b: a.enable || b.enable) false)
         ]
     ) {
+      warnings = [ "kiria-nur is deprecated and will be deleted. Please integrate it into your config." ];
       assertions = lib.singleton {
         assertion = !config.services.kmscon.enable;
         message = "services.kmscon enabled";
